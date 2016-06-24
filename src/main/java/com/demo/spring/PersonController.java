@@ -23,7 +23,7 @@ public class PersonController {
 		this.personService = ps;
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/persons", method = RequestMethod.GET)
 	public String listPersons(Model model) {
 		model.addAttribute("person", new Person());
 		model.addAttribute("listPersons", this.personService.listPersons());
@@ -42,7 +42,7 @@ public class PersonController {
 			this.personService.updatePerson(p);
 		}
 		
-		return "redirect:/";
+		return "redirect:/persons";
 		
 	}
 	
@@ -50,7 +50,7 @@ public class PersonController {
     public String removePerson(@PathVariable("id") int id){
 		
         this.personService.removePerson(id);
-        return "redirect:/";
+        return "redirect:/persons";
     }
  
     @RequestMapping("/edit/{id}")
