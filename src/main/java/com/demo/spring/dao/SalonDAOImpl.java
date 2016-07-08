@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.demo.spring.model.Employe;
 import com.demo.spring.model.Salon;
 
 @Repository
@@ -63,5 +64,9 @@ public class SalonDAOImpl implements SalonDAO {
 		}
 		logger.info("Salon deleted successfully, salon details="+p);
 	}
+
+
+
+	
 
 }

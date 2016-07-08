@@ -27,7 +27,7 @@ public class IndexController {
 	public String listSalons(Model model) {
 		model.addAttribute("salon", new Salon());
 		model.addAttribute("listSalons", this.salonService.listSalons());
-		return "salon";
+		return "index";
 	}
 	
 }

@@ -5,20 +5,18 @@
 <html>
 <head>
 	<title>Salon Page</title>
-	<style type="text/css">
-		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-		.tg .tg-4eph{background-color:#f9f9f9}
-	</style>
+	<link href="<c:url value="/resources/css/salon.css" />" rel="stylesheet">
 </head>
 <body>
 <h1>
-	Add a Salon
+
+	Ajouter un Salon
+
+
 </h1>
 
 <c:url var="addAction" value="/salon/add" ></c:url>
-
+<div id=registration >
 <form:form action="${addAction}" commandName="salon">
 <table>
 	<c:if test="${!empty salon.name}">
@@ -37,7 +35,7 @@
 	<tr>
 		<td>
 			<form:label path="name">
-				<spring:message text="Name"/>
+				<spring:message text="Nom"/>
 			</form:label>
 		</td>
 		<td>
@@ -46,49 +44,50 @@
 	</tr>
 	<tr>
 		<td>
-			<form:label path="country">
-				<spring:message text="Country"/>
+			<form:label path="ville">
+				<spring:message text="Ville"/>
 			</form:label>
 		</td>
 		<td>
-			<form:input path="country" />
+			<form:input path="ville" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form:label path="quartier">
+				<spring:message text="Quartier"/>
+			</form:label>
+		</td>
+		<td>
+			<form:input path="quartier" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form:label path="numtel">
+				<spring:message text="Numero de Telephone"/>
+			</form:label>
+		</td>
+		<td>
+			<form:input path="numtel" />
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
 			<c:if test="${!empty salon.name}">
 				<input type="submit"
-					value="<spring:message text="Edit Salon"/>" />
+					value="<spring:message text="Modifier"/>" />
 			</c:if>
 			<c:if test="${empty salon.name}">
-				<input type="submit"
-					value="<spring:message text="Add Salon"/>" />
+				<input id="bouton" type="submit"
+					value="<spring:message text="Ajouter"/>" />
 			</c:if>
 		</td>
 	</tr>
 </table>	
 </form:form>
+</div>
 <br>
-<h3>Salons List</h3>
-<c:if test="${!empty listSalons}">
-	<table class="tg">
-	<tr>
-		<th width="80">Salon ID</th>
-		<th width="120">Salon Name</th>
-		<th width="120">Salon Country</th>
-		<th width="60">Edit</th>
-		<th width="60">Delete</th>
-	</tr>
-	<c:forEach items="${listSalons}" var="salon">
-		<tr>
-			<td>${salon.id}</td>
-			<td>${salon.name}</td>
-			<td>${salon.country}</td>
-			<td><a href="<c:url value='/edit/${salon.id}' />" >Edit</a></td>
-			<td><a href="<c:url value='/remove/${salon.id}' />" >Delete</a></td>
-		</tr>
-	</c:forEach>
-	</table>
-</c:if>
+
 </body>
 </html>

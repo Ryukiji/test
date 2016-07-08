@@ -30,6 +30,8 @@ public class SalonController {
 		return "salon";
 	}
 	
+	
+	
 	//For add and update salon both
 	@RequestMapping(value= "/salon/add", method = RequestMethod.POST)
 	public String addSalon(@ModelAttribute("salon") Salon p){
@@ -42,7 +44,7 @@ public class SalonController {
 			this.salonService.updateSalon(p);
 		}
 		
-		return "redirect:/salons";
+		return "redirect:/";
 		
 	}
 	
@@ -50,7 +52,7 @@ public class SalonController {
     public String removeSalon(@PathVariable("id") int id){
 		
         this.salonService.removeSalon(id);
-        return "redirect:/salons";
+        return "redirect:/";
     }
  
     @RequestMapping("/editSalon/{id}")
@@ -58,6 +60,13 @@ public class SalonController {
         model.addAttribute("salon", this.salonService.getSalonById(id));
         model.addAttribute("listSalons", this.salonService.listSalons());
         return "salon";
-    }
-	
-}
+    }	
+    
+    @RequestMapping("/viewSalon/{id}")
+    public String viewSalon(@PathVariable("id") int id, Model model){
+        model.addAttribute("salon", this.salonService.getSalonById(id));
+        model.addAttribute("listSalons", this.salonService.listSalons());
+        return "vuesalon";
+    }	
+   
+} 

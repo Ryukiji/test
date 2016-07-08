@@ -12,10 +12,10 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
+      
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/resources/**" location="/resources/theme1/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -40,8 +40,12 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.demo.spring.model.Person</beans:value>
 				<beans:value>com.demo.spring.model.Salon</beans:value>
+				<beans:value>com.demo.spring.model.Employe</beans:value>
+				<beans:value>com.demo.spring.model.Produit</beans:value>
+				<beans:value>com.demo.spring.model.Operation</beans:value>
+				<beans:value>com.demo.spring.model.Services</beans:value>
+				
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -49,18 +53,10 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
- 				<beans:prop key="hibernate.hbm2ddl.auto">create</beans:prop> 
+ 				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop> 
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	
-	<beans:bean id="personDAO" class="com.demo.spring.dao.PersonDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="personService" class="com.demo.spring.service.PersonServiceImpl">
-		<beans:property name="personDAO" ref="personDAO"></beans:property>
-	</beans:bean>
-	
 	
 	<beans:bean id="salonDAO" class="com.demo.spring.dao.SalonDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
@@ -68,6 +64,38 @@
 	<beans:bean id="salonService" class="com.demo.spring.service.SalonServiceImpl">
 		<beans:property name="salonDAO" ref="salonDAO"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="employeDAO" class="com.demo.spring.dao.EmployeDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="employeService" class="com.demo.spring.service.EmployeServiceImpl">
+		<beans:property name="employeDAO" ref="employeDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="produitDAO" class="com.demo.spring.dao.ProduitDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="produitService" class="com.demo.spring.service.ProduitServiceImpl">
+		<beans:property name="produitDAO" ref="produitDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="operationDAO" class="com.demo.spring.dao.OperationDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="operationService" class="com.demo.spring.service.OperationServiceImpl">
+		<beans:property name="operationDAO" ref="operationDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="servicesDAO" class="com.demo.spring.dao.ServicesDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="servicesService" class="com.demo.spring.service.ServicesServiceImpl">
+		<beans:property name="servicesDAO" ref="servicesDAO"></beans:property>
+	</beans:bean>
+	
+	
+	
+	
 	
 	
 	
